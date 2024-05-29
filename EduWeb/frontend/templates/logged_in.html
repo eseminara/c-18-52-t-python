@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logged In</title>
+</head>
+<body>
+    <h1>You are logged in!</h1>
+    <form method="post" action="/apps/users/logout/">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>

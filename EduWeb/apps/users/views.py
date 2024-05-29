@@ -1,9 +1,36 @@
 from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 from rest_framework import viewsets
+from rest_framework.decorators import api_view
+
 from .models import User, Classroom, Subject, Enrollment, Grade, Event
 from .serializers import UserSerializer, ClassroomSerializer, SubjectSerializer, EnrollmentSerializer, GradeSerializer, EventSerializer
+
+
+@api_view(['GET', 'POST'])
+def custom_login(request):
+    if request.method == 'GET':
+        return render(request, 'login.html')
+    elif request.method == 'POST':
+        username = request.data.get('username')
+        password = request.data.get('password')
+        user = authenticate(username=username, password=password)
+        if user:
+            login(request, user)
+            return render(request, 'logged_in.html')
+        else:
+            return render(request, 'login.html', {'error': 'Invalid Credentials'})
+
+@api_view(['POST'])
+def custom_logout(request):
+    logout(request)
+    return redirect('custom_login')
+
+
+
+
 
 
 
