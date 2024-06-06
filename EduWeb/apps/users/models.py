@@ -15,6 +15,11 @@ class UserProfile(models.Model):
     address = models.CharField(max_length=90, null=True, blank=True)
     phone_number = models.CharField(max_length=25, unique=True, null=True, blank=True)
 
+    # Campos para el padre
+    parent_name = models.CharField(max_length=255, null=True, blank=True)
+    parent_phone = models.CharField(max_length=25, null=True, blank=True)
+    parent_email = models.EmailField(null=True, blank=True)  # Cambiado a EmailField
+
     def __str__(self):
         return self.user.username
 

@@ -5,7 +5,10 @@ from .models import UserProfile, Classroom, Subject, Enrollment, Grade, Event
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ['role', 'dni', 'address', 'phone_number']
+        fields = [
+            'role', 'dni', 'address', 'phone_number',
+            'parent_name', 'parent_phone', 'parent_email'
+        ]
 
 class UserSerializer(serializers.ModelSerializer):
     profile = UserProfileSerializer()
@@ -37,6 +40,9 @@ class UserSerializer(serializers.ModelSerializer):
         profile.dni = profile_data.get('dni', profile.dni)
         profile.address = profile_data.get('address', profile.address)
         profile.phone_number = profile_data.get('phone_number', profile.phone_number)
+        profile.parent_name = profile_data.get('parent_name', profile.parent_name)
+        profile.parent_phone = profile_data.get('parent_phone', profile.parent_phone)
+        profile.parent_email = profile_data.get('parent_email', profile.parent_email)
         profile.save()
 
         return instance
