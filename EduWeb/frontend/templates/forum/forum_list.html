@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forum List</title>
+</head>
+<body>
+    <h1>Forums</h1>
+    <ul>
+        {% for forum in forums %}
+            <li><a href="{% url 'forum_detail' forum.pk %}">{{ forum.title }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_forum' %}">Create new forum</a>
+</body>
+</html>

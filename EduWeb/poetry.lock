@@ -15,6 +15,17 @@ files = [
 tests = ["mypy (>=0.800)", "pytest", "pytest-asyncio"]
 
 [[package]]
+name = "dj-auth"
+version = "1.5.1"
+description = "The goal of dj_auth is to limit data access for certain user over your django project."
+optional = false
+python-versions = "*"
+files = [
+    {file = "dj_auth-1.5.1-py2.py3-none-any.whl", hash = "sha256:836c7b6f5dbc5d517e08ac36b59e62be4625e18c037fd6c9d4562a76896b7fb5"},
+    {file = "dj_auth-1.5.1.tar.gz", hash = "sha256:845df13beb3695b76d939c6603a26459a5401da0c6be938f0abcd1cb89b3d65a"},
+]
+
+[[package]]
 name = "django"
 version = "5.0.6"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
@@ -163,4 +174,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "9a92f2f437623d60dd9f4e65ab2b7a1f79675c04d23f37723b5be39ce8fb99bd"
+content-hash = "6604c7d3bad241b284813bbcde408566dfedf32da01ead79eff331b53783c979"

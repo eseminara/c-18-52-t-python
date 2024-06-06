@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ forum.title }}</title>
+</head>
+<body>
+    <h1>{{ forum.title }}</h1>
+    <p>{{ forum.description }}</p>
+
+    <h2>Messages</h2>
+    <ul>
+        {% for message in messages %}
+            <li>{{ message.author.username }}: {{ message.content }} <a href="{% url 'delete_message' message.pk %}">Delete</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Post a message</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Post</button>
+    </form>
+</body>
+</html>
+

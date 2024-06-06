@@ -1,59 +1,65 @@
-from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-# Create your views here.
 from rest_framework import viewsets
-from rest_framework.decorators import api_view
-
-from .models import User, Classroom, Subject, Enrollment, Grade, Event
+from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
+from django.views.decorators.csrf import ensure_csrf_cookie
+from rest_framework.permissions import AllowAny
+from django.utils.decorators import method_decorator
+from django.contrib.auth.models import User
+from .models import UserProfile, Classroom, Subject, Enrollment, Grade, Event
 from .serializers import UserSerializer, ClassroomSerializer, SubjectSerializer, EnrollmentSerializer, GradeSerializer, EventSerializer
 
+class CustomLoginView(APIView):
+    permission_classes = [AllowAny]
 
-@api_view(['GET', 'POST'])
-def custom_login(request):
-    if request.method == 'GET':
+    @method_decorator(ensure_csrf_cookie)
+    def get(self, request):
         return render(request, 'login.html')
-    elif request.method == 'POST':
+
+    def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
         user = authenticate(username=username, password=password)
         if user:
             login(request, user)
-            return render(request, 'logged_in.html')
+            return render(request, 'logged_in.html', {'user': user})
         else:
             return render(request, 'login.html', {'error': 'Invalid Credentials'})
 
-@api_view(['POST'])
-def custom_logout(request):
-    logout(request)
-    return redirect('custom_login')
+class CustomLogoutView(APIView):
+    permission_classes = [AllowAny]
 
-
-
-
-
-
+    def post(self, request):
+        logout(request)
+        return redirect('custom_login')
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
 
 class ClassroomViewSet(viewsets.ModelViewSet):
     queryset = Classroom.objects.all()
     serializer_class = ClassroomSerializer
+    permission_classes = [IsAuthenticated]
 
 class SubjectViewSet(viewsets.ModelViewSet):
     queryset = Subject.objects.all()
     serializer_class = SubjectSerializer
+    permission_classes = [IsAuthenticated]
 
 class EnrollmentViewSet(viewsets.ModelViewSet):
     queryset = Enrollment.objects.all()
     serializer_class = EnrollmentSerializer
+    permission_classes = [IsAuthenticated]
 
 class GradeViewSet(viewsets.ModelViewSet):
     queryset = Grade.objects.all()
     serializer_class = GradeSerializer
+    permission_classes = [IsAuthenticated]
 
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
+    permission_classes = [IsAuthenticated]
