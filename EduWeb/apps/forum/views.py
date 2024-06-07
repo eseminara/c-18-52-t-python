@@ -1,8 +1,19 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from .models import Forum, Message
 from .forms import ForumForm, MessageForm
 from apps.users.models import User, Classroom
+
+
+class ForumView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        data = {"message": "Hello, Forum!"}
+        return Response(data)
 
 @login_required
 def forum_list(request):
