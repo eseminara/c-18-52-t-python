@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from rest_framework import viewsets
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.response import Response
 from django.views.decorators.csrf import ensure_csrf_cookie
-from rest_framework.permissions import AllowAny
 from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
 from .models import UserProfile, Classroom, Subject, Enrollment, Grade, Event
@@ -33,6 +33,16 @@ class CustomLogoutView(APIView):
     def post(self, request):
         logout(request)
         return redirect('custom_login')
+
+
+class UserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
+
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
