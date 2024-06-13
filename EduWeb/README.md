@@ -41,7 +41,7 @@ EduWeb is an educational web application developed with Django that provides fun
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/eduweb.git
+    git clone https://github.com/No-Country/c-18-52-t-python.git
     cd eduweb
     ```
 
@@ -73,3 +73,28 @@ Make sure to configure the following variables in your `.env` file:
 DEBUG=True
 SECRET_KEY=your-secret-key
 DATABASE_URL=sqlite:///db.sqlite3
+
+
+Usage
+
+Admin Panel: http://localhost:8000/admin/
+API Documentation:
+Swagger UI: http://localhost:8000/swagger/
+ReDoc: http://localhost:8000/redoc/
+
+
+API Routes
+
+Users: /api/users/
+Forums: /api/forum/
+Skills: /api/skills/
+
+
+API Documentation
+
+The API is documented using Swagger. You can access the documentation at:
+
+Swagger UI: http://localhost:8000/swagger/
+ReDoc: http://localhost:8000/redoc/
+Contributions
+Contributions are welcome! Please fork the repository and submit a pull request.
