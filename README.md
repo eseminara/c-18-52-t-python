@@ -93,7 +93,7 @@ DATABASE_URL=sqlite:///db.sqlite3
 - Forums: /api/forum/
 - Skills: /api/skills/
 
-##API Documentation
+## API Documentation
 
 
 The API is documented using Swagger. You can access the documentation at:
