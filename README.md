@@ -16,6 +16,7 @@ EduWeb is an educational web application developed with Django that provides fun
 - [API Documentation](#api-documentation)
 - [Contributions](#contributions)
 - [License](#license)
+- [Usage](#usage)
 
 ## Features
 
@@ -77,7 +78,8 @@ DEBUG=True
 SECRET_KEY=your-secret-key
 DATABASE_URL=sqlite:///db.sqlite3
 
-Usage
+
+## Usage
 
 Admin Panel: http://localhost:8000/admin/
 API Documentation:
