@@ -1,6 +1,3 @@
-# c-18-52-t-python
-Plataforma de seguimiento de rendimiento academico
-
 # EduWeb
 
 EduWeb is an educational web application developed with Django that provides functionalities for user management, forums, and skills. The project includes an API documented using Swagger.
