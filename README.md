@@ -15,8 +15,6 @@ EduWeb is an educational web application developed with Django that provides fun
 - [API Routes](#api-routes)
 - [API Documentation](#api-documentation)
 - [Contributions](#contributions)
-- [License](#license)
-- [Usage](#usage)
 
 ## Features
 
