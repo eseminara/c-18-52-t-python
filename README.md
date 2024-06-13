@@ -75,28 +75,32 @@ Make sure to configure the following variables in your `.env` file:
 DEBUG=True
 SECRET_KEY=your-secret-key
 DATABASE_URL=sqlite:///db.sqlite3
+```
 
 
 ## Usage
 
-Admin Panel: http://localhost:8000/admin/
-API Documentation:
-Swagger UI: http://localhost:8000/swagger/
-ReDoc: http://localhost:8000/redoc/
+- Admin Panel: http://localhost:8000/admin/
+
+## API Documentation:
+- Swagger UI: http://localhost:8000/swagger/
+- ReDoc: http://localhost:8000/redoc/
 
 
-API Routes
+## API Routes
 
-Users: /api/users/
-Forums: /api/forum/
-Skills: /api/skills/
+- Users: /api/users/
+- Forums: /api/forum/
+- Skills: /api/skills/
 
+##API Documentation
 
-API Documentation
 
 The API is documented using Swagger. You can access the documentation at:
 
-Swagger UI: http://localhost:8000/swagger/
-ReDoc: http://localhost:8000/redoc/
-Contributions
+- Swagger UI: http://localhost:8000/swagger/
+- ReDoc: http://localhost:8000/redoc/
+
+
+## Contributions
 Contributions are welcome! Please fork the repository and submit a pull request.
